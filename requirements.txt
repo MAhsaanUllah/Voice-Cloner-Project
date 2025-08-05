@@ -1,0 +1,7 @@
+streamlit
+numpy
+matplotlib
+librosa
+scipy
+git+https://github.com/coqui-ai/TTS.git
+
