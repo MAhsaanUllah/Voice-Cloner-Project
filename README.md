@@ -1,3 +1,15 @@
+---
+title: Voice Cloner App
+emoji: 🗣️
+colorFrom: pink
+colorTo: purple
+sdk: streamlit
+sdk_version: "1.30.0"
+app_file: app.py
+pinned: false
+---
+
+
 # 🎙️ Custom AI Voice Cloner & Text-to-Speech Generator
 
 This is my internship project to build an AI-based voice cloning and TTS (Text-to-Speech) application using pretrained models.
@@ -84,3 +96,4 @@ Matplotlib
 Made with ❤️ by Ahsaan Ullah
 GitHub
 
+ 
