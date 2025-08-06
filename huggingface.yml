@@ -1,3 +1,4 @@
-sdk: streamlit
+# huggingface.yml
+title: Voice Cloner App
+sdk: docker
 app_file: app.py
-python_version: 3.10
