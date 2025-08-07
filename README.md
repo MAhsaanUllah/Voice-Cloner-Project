@@ -90,10 +90,10 @@ Matplotlib
 
 📸 Screenshots
 UI
-![Voice Cloner App UI](screenshots/UI.png)
+<img src="screenshots/UI.png" alt="Voice Cloner App UI" width="700"/>
 
 Output
-![Voice Cloner App Output](screenshots/Output.png)
+<img src="screenshots/Output.png" alt="Voice Cloner App UI" width="700"/>
 
 
 🙋 Author
