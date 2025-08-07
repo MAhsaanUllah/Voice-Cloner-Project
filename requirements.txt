@@ -1,7 +1,4 @@
-streamlit
-numpy
+streamlit==1.30.0
+TTS==0.17.4
+librosa>=0.10.0
 matplotlib
-librosa
-scipy
-git+https://github.com/coqui-ai/TTS.git
-
