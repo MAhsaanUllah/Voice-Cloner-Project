@@ -9,24 +9,18 @@ from TTS.api import TTS
 
 # 🎙️ App Header
 st.set_page_config(page_title="Voice Cloner", page_icon="🎙️")
-st.title("🎙️ Voice Cloner App (Multi-Speaker Demo)")
+st.title("🎙️ Voice Cloner App (Single-Speaker Model)")
 st.markdown("---")
 
-# 📦 Load Multi-Speaker Model
-MODEL_NAME = "tts_models/en/vctk/vits"
+# 📦 Load Stable Single-Speaker Model
+MODEL_NAME = "tts_models/en/ljspeech/tacotron2-DDC"
 tts = TTS(model_name=MODEL_NAME, gpu=False)
 
-# 🎤 Speaker Selection (if available)
-speakers = tts.speakers
-selected_speaker = None
-
-if speakers:
-    selected_speaker = st.sidebar.selectbox("🎤 Select a Speaker", speakers)
-else:
-    st.sidebar.warning("⚠️ This is a single-speaker model.")
+# ℹ️ Info Sidebar
+st.sidebar.info("Using single-speaker model: tacotron2-DDC")
 
 # 📝 Text Input
-user_text = st.text_area("📝 Enter text to synthesize:", "Hello, this is a multi-speaker voice cloning demo.")
+user_text = st.text_area("📝 Enter text to synthesize:", "Hello, this is a voice cloning demo.")
 
 # 🎧 Voice Generation Button
 if st.button("Generate Voice 🎧"):
@@ -36,15 +30,13 @@ if st.button("Generate Voice 🎧"):
 
     try:
         # Generate Speech to File
-        if selected_speaker:
-            tts.tts_to_file(text=user_text, speaker=selected_speaker, file_path=audio_path)
-        else:
-            tts.tts_to_file(text=user_text, file_path=audio_path)
+        tts.tts_to_file(text=user_text, file_path=audio_path)
 
         # 🔊 Play Audio
         with open(audio_path, "rb") as audio_file:
-            st.audio(audio_file.read(), format="audio/wav")
-            st.download_button("⬇️ Download Audio", data=audio_file, file_name="output.wav")
+            audio_data = audio_file.read()
+            st.audio(audio_data, format="audio/wav")
+            st.download_button("⬇️ Download Audio", data=audio_data, file_name="output.wav")
 
         # 📊 Spectrogram Visualization
         y, sr = librosa.load(audio_path)
@@ -57,7 +49,7 @@ if st.button("Generate Voice 🎧"):
 
         # 🧾 Log Generation
         with open("logs/project_log.txt", "a") as log_file:
-            log_file.write(f"{datetime.now()} | Speaker: {selected_speaker} | Text: {user_text}\n")
+            log_file.write(f"{datetime.now()} | Text: {user_text}\n")
 
         st.success("✅ Audio generated, visualized, and logged.")
 
