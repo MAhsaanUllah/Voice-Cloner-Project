@@ -1,17 +1,16 @@
 # 🎙️ Custom AI Voice Cloner & Text-to-Speech Generator
 
-This is my internship project, which involves building an AI-based voice cloning and text-to-speech (TTS) application using pre-trained Coqui TTS models.
+This is my internship project that demonstrates how to build an AI-based voice cloning and text-to-speech (TTS) application using pre-trained Coqui TTS models.
 
 ---
 
 ## ✅ Features
 
-- 🔊 Uses `tts_models/en/vctk/vits` pretrained Coqui TTS model  
-- 🎙️ Multi-speaker voice cloning (choose synthetic speakers)  
-- 📝 Convert any input text to speech  
-- 📥 Download generated audio file  
-- 📊 View audio spectrogram for visualization  
-- 🧾 Auto-log each generation with speaker and timestamp  
+- 🔊 **Pretrained TTS Model:** Uses `tts_models/en/ljspeech/tacotron2-DDC` (single-speaker)  
+- 📝 **Convert any input text to speech**  
+- 📥 **Download the generated audio**  
+- 📊 **Visualize the spectrogram of the audio**  
+- 🧾 **Auto-log each generation with timestamp**  
 
 ---
 
@@ -23,51 +22,60 @@ This is my internship project, which involves building an AI-based voice cloning
 git clone https://github.com/MAhsaanUllah/Voice-Cloner-Project.git
 cd Voice-Cloner-Project
 
-2. Create Virtual Environment (Optional but Recommended)
-
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
+2. Create Virtual Environment (Recommended)
 
 # Windows
 python -m venv venv
 venv\Scripts\activate
 
-3. Install Dependencies
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+
+3. Install Requirements
 
 pip install -r requirements.txt
 
-4. Run the Streamlit App
+4. Run the App
 
 streamlit run app.py
+
+🌐 Optionally Host with ngrok
+To make your app accessible via a temporary public link:
+
+ngrok config add-authtoken YOUR_NGROK_TOKEN
+streamlit run app.py
+# Then in another terminal:
+ngrok http 8501
 
 
 📂 Project Structure
 
 VOICE-CLONER-PROJECT/
-├── app.py               # Streamlit web app         
-├── requirements.txt     # Required Python libraries
+├── app.py               # Streamlit app source code
+├── requirements.txt     # Python dependencies
 ├── README.md            # Project documentation
-├── sample/              # Sample output audio files
-├── screenshot/          # UI screenshots
-├── logs/                # Generation logs (auto-created)
-└── output/              # Audio outputs (auto-created)
+├── .streamlit/          # Streamlit UI configs
+├── logs/                # Log of each generation
+├── output/              # Stores generated audio files
+├── screenshots/         # Screenshots of the app
+└── .gitignore           # Prevents committing secrets, logs, outputs, etc.
 
-📚 Notes
-🔁 Based on a pretrained multi-speaker Coqui TTS model
 
-🧪 Useful for understanding TTS inference without GPU training
+💡 Notes
+🗣️ Currently uses a single-speaker Coqui TTS model
 
-✅ Works on local machine or via ngrok for temporary hosting
+🚫 Some platforms (e.g., Streamlit Cloud, Hugging Face Spaces) may fail due to espeak-ng backend issues
 
-❌ Some platforms like Streamlit Cloud or Hugging Face may lack full OS-level support (e.g., espeak-ng backend)
+🔐 Your secrets (e.g., ngrok token) are protected via .gitignore
 
-🔧 Future Upgrades
-🗣️ Fine-tune with own voice samples
+🔮 Future Upgrades
+🎙️ Multi-speaker support
 
-📦 Upload custom datasets
+🧠 Train on your own voice dataset
 
-☁️ Deploy fully on Streamlit Cloud or Hugging Face Spaces (Docker mode)
+☁️ Deploy on Streamlit Cloud or Hugging Face (Docker)
 
 🧠 Tech Stack
 Python
@@ -80,12 +88,14 @@ Librosa
 
 Matplotlib
 
-📸 Screenshot
-(Insert your image here)
+📸 Screenshots
+UI
+![Voice Cloner App UI](screenshots/UI.png)
+
+Output
+![Voice Cloner App Output](screenshots/Output.png)
+
 
 🙋 Author
 Made with ❤️ by Ahsaan Ullah
-🔗 GitHub Profile
-
-
 
